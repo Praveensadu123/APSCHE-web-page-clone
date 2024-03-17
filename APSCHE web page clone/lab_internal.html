@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APSCHE</title>
+<style>
+    body
+    {
+        margin-top: 0;
+        margin-left: 25vh;
+        margin-right: 25vh;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .top
+    {
+        margin: 0;
+        display: flex;
+        padding: 3px;
+        padding-left: 0;
+        box-sizing: border-box;
+        background-color: #4e674d;
+        color: white;
+        font-family: sans-serif;
+        font-size: 80%;
+        font-weight: 549;
+        text-align:left;
+    }
+    .top .adjust_font
+    {
+        margin-left: 0px;
+        width: 28.5%;
+
+    }
+    .top .color
+    {
+        margin-left: 0;
+        width: 28.5%;
+        display: flex;
+        margin-right: 10px;
+        
+    }
+    .color .dot 
+    {
+        height: 13px;
+        width: 13px;
+        border-radius: 50%;
+        z-index: 10000;
+    }
+    .lightgreen {
+        background-color: #5df92c; /* Adjust the color as needed */
+      }
+      
+      .yellow {
+        background-color: #ffa100; /* Adjust the color as needed */
+      }
+      
+      .white {
+        background-color: white; /* Adjust the color as needed */
+      }
+      
+      .black {
+        background-color: black; /* Adjust the color as needed */
+      }
+      .grey {
+        background-color: grey; /* Adjust the color as needed */
+      }
+    .top .screen
+    {
+        margin-left: 0;
+        width: 26%;
+
+    }
+    
+    .adjust_font, .color, .screen, .contact
+    {
+        position: relative;
+        min-height: 1px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .top .screen img
+    {
+        height: 1.85vh;
+    }
+    .header_image img
+    {
+        height: 20vh;
+        width: 100%;
+    }
+    .options
+    {
+        margin-top: 0;
+        
+    }
+    .options ul
+    {
+        margin-top: 0;
+        transform: translateY(-18px);
+        background-color: #4e674d;
+        color: white;
+        
+    }
+    .options ul .all
+    {
+        position: relative;
+        transform: translateX(-43px);
+        width: 100%;
+        display: flex;
+        
+    }
+    .options ul .all .option 
+    {
+        display: flex;
+        padding: 1.55vh;
+        padding-top: 1.2vh;
+        
+    }
+    .options ul .option a
+    {
+        margin-left: 0;
+        padding-left: 0.6vh;
+        font-size: 0.98em;
+        font-weight: 400;
+        text-decoration: none;
+        color: white;
+    }
+    .options ul .option i
+    {
+        margin-left: 0;
+    }
+    .middle
+    {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        max-height: 10px;
+    }
+    .middle .chairman
+    {
+        width: 290px;
+        height: min-content;
+        background-color: #d5e6d59e;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        
+    }
+    .middle .chairman a
+    {
+        text-decoration: none;
+        text-align: center;
+        color: darkblue;
+    }
+    .btn
+    {
+        display: inline-block;
+        padding: 7px;
+        text-decoration: none;
+        border-radius: 4px;
+        background-color: #337ab7;
+        touch-action: manipulation;
+        width: 50%;
+        box-sizing: border-box;
+    }
+    .btn b{
+        color: white;
+    }
+    .middle .slideshow-container
+    {
+        margin-left: 15px;
+        width: 575px;
+        height: auto;
+    }
+    .slideshow-container img {
+        width: 100%;
+        max-height: 230px;
+    }
+    .slideshow-container .caption {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #496d489c;
+        font-weight: 500;
+        font-size: 1.1em;
+        color: #fffc94;
+        padding: 10px;
+        text-align: center;
+    }
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: auto;
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        transition: background-color 0.3s;
+      }
+      .prev:hover, .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+    .prev
+    {
+        left: 470px;
+    }
+    .next
+    {
+        right: 510px;
+    }
+    .announcements
+    {
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
+    }
+    
+    .a{
+        height: 40px;
+        width: 95%;
+        margin-top: 20px;
+        margin-left: 10px;
+        background-color: #337ab7;
+        border-radius: 4px;
+    }
+    .a a
+    {
+        display: inline-block;
+        text-decoration: none;
+        padding-top: 5px;
+        width: 100%;
+        color: white;
+        font-size: 1em;
+        font-weight: 600;
+        padding-left: 10px;
+    }
+    .a img
+    {
+        transform: translateY(4px);
+    }
+    .row5
+    {
+        margin-top: 0;
+        display: flex;
+    }
+    .row5 .col1
+    {
+        position: relative;
+        transform: translateY(300px);
+        background-color: #d5e6d59e;
+    }
+    .row5 .col1 img
+    {
+        padding: 0 15px;
+        height: 254px;
+    }
+    .row5 .col2
+    {
+        position: relative;
+        transform: translateY(300px);
+        background-color: #d5e6d59e;
+
+    }
+    .row5 .col2 
+    {
+        padding: 0 20px;
+    }
+    .row5 .col2 .row1 img
+    {
+        padding: 5px;
+    }
+    .row5 .col2 .row2 img
+    {
+        padding: 5px;
+    }
+    .row5 .col3
+    {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        transform: translateY(300px);
+        width: 160px;
+        height: 254px;
+
+    }
+    .row5 .col3 img
+    {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .row5 .col3 a
+    {
+        background-color: #337ab7;
+        display: block;
+        text-decoration: none;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10PX;
+        margin-bottom: 10PX;
+        padding-left: 0;
+        padding: 10px;
+        color: white;
+        font-size: 0.8em;
+        font-weight: 600;
+        background-color: #337ab7;
+        border-radius: 4px;
+    }
+    .row5 .col3 b
+    {
+        margin: 5px;
+    }
+    .row5 .slideshow-container2
+    {
+        position: relative;
+        transform: translateY(300px);
+        background-color: #d5e6d59e;
+        padding: 5px;
+    }
+    
+    .slide1 {
+      text-align: center;
+    }
+    
+    .mySlides1 {
+      height: 244px; /* Adjust the height as per your requirement */
+      width: auto;
+      max-width: 100%;
+    }
+    
+    .prev1, .next1 {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: auto;
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      transition: background-color 0.3s;
+    }
+    
+    .prev1:hover, .next1:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .prev1
+    {
+        left: 0px;
+    }
+    .next1
+    {
+        right: 0px;
+    }
+    .row6
+    {
+        margin-top: 0;
+        position: relative;
+        transform: translateY(300px);
+        display: flex;
+
+    }
+    .row6 .col
+    {
+        margin: 15px;
+        padding: 15px;
+        border: 2px solid #d2edf8;
+        background-color: #d2edf8;
+    }
+    .row6 .col a
+    {
+        text-decoration: none;
+        color: #1c3eda;
+        transition: o.3s color ease;
+    }
+    .row6 .col a:hover
+    {
+        color: #ff5200;
+    }
+    .row7
+    {
+        margin-top: 0;
+        position: relative;
+        transform: translateY(300px);
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+
+    }
+    .row7 .col
+    {
+        
+        width: calc((100% - 100px) / 7.5);
+        text-align: center;
+        padding: 10px;
+        border-radius: 4px;
+    }
+    .row7 .col a
+    {
+        flex: 1;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        transition: o.3s color ease;
+    }
+    .row8
+    {
+        margin-top: 0;
+        position: relative;
+        transform: translateY(300px);
+        background-color: #4e674d;
+        color: white;
+        font-size: 16px;
+        font-weight: normal;
+        padding-bottom: 2px;
+
+    }
+    .row8 img
+    {
+        margin-bottom: -5px;
+        padding-top: 3px;
+    } 
+
+    
+    
+
+</style>
+</head>
+
+<body>
+    <div class="top">
+        <div class="adjust_font">
+            <span>Font Size:</span>
+            &nbsp;
+            <span>A-</span>
+            &nbsp;
+            <span>A</span>
+            &nbsp;
+            <span>A+</span>
+            &nbsp;
+        </div>
+        <div class="color">
+            <span>Theme Color:&nbsp;&nbsp;</span>
+            <span class="dot white" style="color: white;"></span>
+            <span>&nbsp;&nbsp;</span>
+            <span class="dot grey" style="color: grey;"></span>
+            <span>&nbsp;&nbsp;</span>
+            <span class="dot black" style="color: white;"></span>
+            <span>&nbsp;&nbsp;</span>
+            <span class="dot lightgreen" style="color: white;"></span>
+            <span>&nbsp;&nbsp;</span>
+            <span class="dot yellow" style="color: white;"></span>
+        </div>
+        <div class="screen">
+            <img src="screenreader.png" alt="Screen Reasder Icon">
+            <span>Screen Reader Access</span>
+        </div>
+        <div class="contact">
+            <ion-icon name="call"></ion-icon>
+            <span>Contact</span>
+        </div>
+        
+    </div>
+    <div class="header_image">
+        <img src="head_img.png" alt="header_image">
+    </div>
+    <div class="options">
+        <ul>
+        <div class="all">
+            <div class="option">
+                <i class="fa fa-home" aria-hidden="true" style='font-size:15px'></i>
+                <a href="#">Home</a>
+            </div>
+            <div class="option">
+                <i class="fa fa-info-circle" aria-hidden="true" style='font-size:15px'></i>
+                <a href="#">About</a>
+            </div>
+            
+            <div class="option">
+                <i class="fa fa-pencil" aria-hidden="true" style='font-size:15px'></i>
+                <a href="#">Intiatives<a>
+            </div>
+            
+            <div class="option">
+                <i class="fa fa-bookmark" aria-hidden="true" style='font-size:15px'></i>
+                <a href="#">Notifications</a>
+            </div>
+            
+            <div class="option">
+                <i class="fa fa-university" aria-hidden="true" style='font-size:15px'></i>
+                <a href="#">Profile</a>
+            </div>
+            
+            <div class="option">
+                <i class="fa fa-bar-chart" style="font-size:15px"></i>
+                <a href="#">Reports</a>
+            </div>
+            
+            <div class="option">
+                <i class="fa fa-envelope-open-o" aria-hidden="true" style='font-size:15px'></i>
+                <a href="#">RTI</a>
+            </div>
+            
+            <div class="option">
+                <i class="fa fa-book" aria-hidden="true" style='font-size:15px'></i>
+                <a href="#">Order</a>
+            </div>
+            
+            <div class="option">
+                <i class="fa fa-book" aria-hidden="true" style='font-size:15px'></i>
+                <a href="#">QAC</a>
+            </div>
+            
+            <div class="option">
+                <i class="fa fa-pencil" aria-hidden="true" style='font-size:15px'></i>
+                <a href="#">CETs</a>
+            </div>
+            
+            <div class="option">
+                <i class="fa fa-chevron-circle-right" aria-hidden="true" style='font-size:15px'></i>
+                <a href="#">Links</a>
+            </div>
+            
+            <div class="option">
+                <i class="fa fa-book" aria-hidden="true" style='font-size:15px'></i>
+                <a href="#">Tenders</a>
+            </div>
+            
+            <div class="option">
+                <i class="fa fa-question-circle" aria-hidden="true" style='font-size:15px'></i>
+                <a href="#">FAQs</a>
+            </div>
+        </div>
+            
+        </ul>
+    </div>
+    <div class="middle">
+        <div class="chairman" align="center">
+            <img src="chairman_full1.jpg" alt="chairman photo" height="200px" width="250px">
+            <a href="#" target="_blank" style="color: darkblue"><b> Prof. K. Hemachendra Reddy</b></a>
+            <b style="color: red; font-size:1em; padding-bottom: 5px;">Chairman</b>
+            <a class="btn" href="#"><b>Chairman's Desk</b></a>
+        </div>
+        <div class="slideshow-container" onmouseenter="stopAutoSlide()" onmouseleave="startAutoSlide()">
+            <div class="slide">
+              <img class="mySlides" src="image1.jpeg" style="display: block;">
+              <div class="caption">Launching of edX courses by Hon'ble Cheif Minister on 16.02.2024</div>
+            </div>
+            <div class="slide">
+              <img class="mySlides" src="image2.jpg" style="display: none;">
+              <div class="caption">APSCHE DIARY 2024 Release @APSCHE</div>
+            </div>
+            <div class="slide">
+              <img class="mySlides" src="image3.jpg" style="display: none;">
+              <div class="caption">Independance Day Celebration At APSCHE</div>
+            </div>
+          
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <div class="announcements">
+            
+            <div style="font-size:17px;background-color:#99af9975;color:#ee1f28;width: 310px; height: 3.3vh; padding:0.6vh;"> &nbsp;&nbsp;&nbsp; <i class="fa fa-list-alt"></i>  <b>Latest @ APSCHE</b></div>
+            <div class="scroll">
+                <marquee direction="up" scrollamount="4" loop="true" overflow="hidden" style="height: 190px; width: 258px; margin:10px 15px -8px !important;" onmouseover="this.stop()" onmouseout="this.start()">
+                    <p>
+                        <font style="color:#00009d">Notification for Recognition of Association of Professional College SW-2 / SW-3 by APSCHE for the academic year 2024-25 </font>
+                        <a href="Pdf/cir_92_20240301.pdf" target="_blank">Click Here</a>
+                        <img src="new.gif" width="34px"><br><br>
+                        <font style="color:#00009d">Online Application for Unaided New UG Programmes and Conversion of Existing Single Major Programmes for the academic year 2024-25</font>
+                        <a href="newcourselogin.php" target="_blank">Click Here</a>
+                        <img src="new.gif" width="34px"><br><br>
+                        <font style="color:#00009d">Workshop on Machine Learning and Artificial Intelligence on March 15, 2024</font>
+                        <a href="workshop_ml_ai.php" target="_blank">Click Here</a>
+                        <img src="new.gif" width="34px"><br><br>
+                        <font style="color:#00009d">Recruitment Drive by XYZ Company on March 20, 2024</font>
+                        <a href="recruitment_drive_xyz.php" target="_blank">Click Here</a>
+                        <img src="new.gif" width="34px"><br><br>
+                        <font style="color:#00009d">Seminar on Renewable Energy Technologies on March 25, 2024</font>
+                        <a href="seminar_renewable_energy.php" target="_blank">Click Here</a>
+                        <img src="new.gif" width="34px"><br><br>
+                        <font style="color:#00009d">Call for Papers: International Conference on Sustainable Development</font>
+                        <a href="conference_call_papers.php" target="_blank">Click Here</a>
+                        <img src="new.gif" width="34px"><br><br>
+                        <!-- Add more notifications as needed -->
+                    </p>
+                </marquee>
+                <div class="a">
+                    <a href="#" >APSCHE Employability Skill Test <img src="new.gif" width="34px"><br><br></a>
+                    
+                </div>
+                
+            </div>
+          </div>
+          <script>
+            var slideIndex = 1;
+            var slideInterval;
+          
+            showSlides(slideIndex);
+          
+            function plusSlides(n) {
+              showSlides(slideIndex += n);
+            }
+          
+            function currentSlide(n) {
+              showSlides(slideIndex = n);
+            }
+          
+            function showSlides(n) {
+              var i;
+              var slides = document.getElementsByClassName("mySlides");
+              var captions = document.getElementsByClassName("caption");
+              if (n > slides.length) { slideIndex = 1 }
+              if (n < 1) { slideIndex = slides.length }
+              for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+              }
+              for (i = 0; i < captions.length; i++) {
+                captions[i].style.display = "none";
+              }
+              slides[slideIndex - 1].style.display = "block";
+              captions[slideIndex - 1].style.display = "block";
+            }
+          
+            function startAutoSlide() {
+              slideInterval = setInterval(function() {
+                plusSlides(1);
+              }, 2000); // Change image every 2 seconds
+            }
+          
+            function stopAutoSlide() {
+              clearInterval(slideInterval);
+            }
+          
+            startAutoSlide(); // Start automatic slideshow initially
+          </script>
+    </div>
+    <div class="row5">
+        <div class="col1">
+            <img src="apsche_def.png" alt="'apsche defination image" width="250px">
+        </div>
+        <div class="col2">
+            <div class="row1">
+                <img src="1.jpg" width="65px">
+                <img src="2.jpg" width="65px">
+            </div>
+            <div style="border-bottom: 2px solid blue;"></div>
+            <div style="color: #ee1f28; text-align: center;">Annual Reports</div>
+            <div class="row2">
+                <img src="3.jpeg" width="65px">
+                <img src="4.jpg" width="65px">
+            </div>
+            <div style="border-bottom: 2px solid blue;"></div>
+        </div>
+        <div class="col3">
+            <img src="5.jpeg" width="135px" height="79px">
+            <a href="#" style="width: 100%;"><b style="font-size: 1em;">APACHE Career Toolkit</b></a>
+            <img src="6.jpeg" width="125px" height="88px">
+        </div>
+        <div class="col2">
+            <div class="row1">
+                <img src="1.jpg" width="65px">
+                <img src="2.jpg" width="65px">
+            </div>
+            <div class="row2">
+                <img src="3.jpeg" width="65px">
+                <img src="4.jpg" width="65px">
+            </div>
+            <p style="font-size: 0.7em; text-align: center; color:#ee1f28;">Engg. & CBCS Curriculum</p>
+        </div>
+        <div class="slideshow-container2" style="width: 290px;" onmouseenter="stopAutoSlide1()" onmouseleave="startAutoSlide1()">
+            <div class="slide1">
+              <img class="mySlides1" src="14.jpg" style="display: block;">
+            </div>
+            <div class="slide1">
+              <img class="mySlides1" src="15.jpg" style="display: none;">
+            </div>
+            <div class="slide1">
+              <img class="mySlides1" src="16.jpg" style="display: none;">
+            </div>
+            <div class="slide1">
+                <img class="mySlides1" src="17.jpg" style="display: none;">
+              </div>
+          
+            <a class="prev1" onclick="plusSlides1(-1)">&#10094;</a>
+            <a class="next1" onclick="plusSlides1(1)">&#10095;</a>
+        </div>
+        <script>
+            var slideIndex1 = 1;
+            var slideInterval1;
+          
+            showSlides1(slideIndex1);
+          
+            function plusSlides1(n) {
+              showSlides1(slideIndex1 += n);
+            }
+          
+            function currentSlide1(n) {
+              showSlides1(slideIndex1 = n);
+            }
+          
+            function showSlides1(n) 
+            {
+              var i;
+              var slides1 = document.getElementsByClassName("mySlides1");
+              if (n > slides1.length) { slideIndex1 = 1 }
+              if (n < 1) { slideIndex1 = slides1.length }
+              for (i = 0; i < slides1.length; i++) 
+              {
+                slides1[i].style.display = "none";
+              }
+              slides1[slideIndex1 - 1].style.display = "block";
+            }
+          
+            function startAutoSlide1() {
+              slideInterval1 = setInterval(function() {
+                plusSlides1(1);
+              }, 2000); // Change image every 2 seconds
+            }
+          
+            function stopAutoSlide1() {
+              clearInterval(slideInterval1);
+            }
+          
+            startAutoSlide1(); // Start automatic slideshow initially
+          </script>
+    </div>
+    <div class="row6">
+        <div class="col">
+            <a href="#">MODEL ENGINEERING CURRICULUM - 2023<img src="new.gif"></a>
+        </div>
+        <div class="col">
+            <a href="#">UG HONOURS PROGRAMMES WITH SINGLE MAJORS <img src="new.gif"></a>
+        </div>
+        <div class="col" style="font-size: 11px;font-weight:bold;color:#0000f5;">
+            <a href="#">STANDARD OPERATING PROCEDURE (SOP) FOR 4TH YEAR OF 4 YEAR GENERAL UG HONOURS</a>
+        </div>
+        <div class="col" style="font-size: 11px; font-weight:bold;color:#0000f5;">
+            <a href="#">SYLLABUS OF 4TH OF 4 YEAR GENERAL UG HONOURS</a>
+        </div>
+    </div>
+    <div class="row7">
+        <div class="col" style="background-color: #01b0ec;">
+            <a href="#" >Publication</a>
+        </div>
+        <div class="col" style="background-color: #ff300e;">
+            <a href="#">Annual Reports</a>
+        </div>
+        <div class="col" style="background-color: #fa970d;">
+            <a href="#" >Text Books</a>
+        </div>
+        <div class="col" style="background-color: #0c9d54;">
+            <a href="#">Private Universities</a>
+        </div>
+        <div class="col" style="background-color: #01b0ec;">
+            <a href="#">EISC</a>
+        </div>
+        <div class="col" style="background-color: #0c9d54;">
+            <a href="#">UGC Notices</a>
+        </div>
+    </div>
+    <div class="row8">
+        <center>
+         Copyrights © 2020 APSCHE. All Rights Reserved.
+        Designed and developed by &nbsp;<img src="apsche2.png" width="50">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Visitors : <span style="font-size:13px;background:#d85a00">&nbsp;
+        6067303&nbsp;</span>
+        </center>
+        </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
